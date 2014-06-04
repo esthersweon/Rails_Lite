@@ -7,7 +7,7 @@ class Route
 
   # checks if pattern matches path and method matches request method
   def matches?(req)
-    (http_method == req.request_method.downcase.to_sym) && !!(pattern =~ req.path)
+    (@http_method == req.request_method.downcase.to_sym) && !!(@pattern =~ req.path)
   end
 
   # instantiates controller and calls controller action
@@ -20,7 +20,7 @@ class Route
     end
 
     @controller_class.new(req, res, route_params)
-    .invoke_action(action_name)
+    .invoke_action(@action_name)
   end
 end
 
