@@ -12,15 +12,15 @@ trap('INT') { server.shutdown }
 class MyController < ControllerBase
   def go
     render_content("hello world!", "text/html")
-    redirect_to("https://www.google.com")
+    # redirect_to("https://www.google.com")
 
-   	render :show
+   	# render :show
 
-    # after you have sessions going, uncomment:
-#    session["count"] ||= 0
-#    session["count"] += 1
-#    render :counting_show
+   # session["count"] ||= 0
+   # session["count"] += 1
+   # render :counting_show
   end
+
 end
 
 server.mount_proc '/' do |req, res|

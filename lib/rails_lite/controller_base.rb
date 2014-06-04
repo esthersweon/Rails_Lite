@@ -1,8 +1,7 @@
 require 'erb'
-require 'active_support/inflector'
 require_relative 'params'
 require_relative 'session'
-
+require 'active_support/inflector'
 
 class ControllerBase
   attr_reader :params, :req, :res
@@ -61,5 +60,5 @@ class ControllerBase
 
     nil
   end
-  
+
 end
