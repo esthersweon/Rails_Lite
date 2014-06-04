@@ -10,7 +10,7 @@ class Route
     (http_method == req.request_method.downcase.to_sym) && !!(pattern =~ req.path)
   end
 
-  # instantiate controller and call controller action
+  # instantiates controller and calls controller action
   def run(req, res)
     match_data = @pattern.match(req.path)
 
@@ -36,8 +36,7 @@ class Router
     @routes << Route.new(pattern, method, controller_class, action_name)
   end
 
-  # evaluate the proc in the context of the instance
-  # for syntactic sugar :)
+  # evaluates proc in context of the instance
   def draw(&proc)
     instance_eval(&proc)
   end
@@ -48,12 +47,12 @@ class Router
     end
   end
 
-  # should return the route that matches this request
+  # returns route that matches request
   def match(req)
     routes.find { |route| route.matches?(req)}
   end
 
-  # either throw 404 or call run on a matched route
+  # throws 404 or calls run on matched route
   def run(req, res)
     matching_route = match(req)
     if matching_route.nil?
